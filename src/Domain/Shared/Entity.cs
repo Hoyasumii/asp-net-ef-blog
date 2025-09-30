@@ -1,4 +1,4 @@
-namespace Blog.Domain.Shared;
+namespace Domain.Shared;
 
 public abstract class Entity(DateTime? createdAt)
 {

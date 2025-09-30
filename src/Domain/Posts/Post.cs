@@ -1,6 +1,6 @@
-using Blog.Domain.Shared;
+using Domain.Shared;
 
-namespace Blog.Domain.Posts;
+namespace Domain.Posts;
 
 
 public class Post(DateTime? createdAt) : Entity(createdAt)
