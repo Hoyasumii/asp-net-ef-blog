@@ -1,30 +1,15 @@
 
-using Core.Shared;
-using Domain.Blog;
+// using Core.Shared;
+// using Domain.Blog;
+// using Infra.Providers;
 
-namespace Infra.Repositories;
+// namespace Infra.Repositories;
 
-public class BlogRepository(RepositoryProvider<Blog> provider) : IBlogRepository
-{
-    public RepositoryProvider<Blog> Provider { get; } = provider;
-
-    public Task<Blog> Create(Blog content)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> DeleteById(string id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Blog?> FindById(string id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Blog?> UpdateById(string id)
-    {
-        throw new NotImplementedException();
-    }
-}
+// public class BlogRepository
+// {
+//     public static Domain.Blog.BlogRepository Make()
+//     {
+//         RepositoryProvider<Blog> provider = new PostgresProvider();
+//         return new Domain.Blog.BlogRepository();
+//     }
+// }
