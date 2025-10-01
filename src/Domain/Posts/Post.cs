@@ -3,7 +3,7 @@ using Core.Shared;
 namespace Domain.Posts;
 
 
-public class Post(DateTime? createdAt) : Entity(createdAt)
+public class Post : Entity
 {
   public required string Title { get; set; }
   public required string Content { get; set; }

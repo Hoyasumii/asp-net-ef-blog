@@ -1,9 +1,10 @@
 namespace Infra.Providers;
 
-using Core.Shared;
+using Application;
+using Core;
 using Microsoft.EntityFrameworkCore;
 
-public class PostgresProvider<EntityType> : RepositoryProvider<EntityType> where EntityType : Entity
+public class PostgresContext : ApplicationContext
 {
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {

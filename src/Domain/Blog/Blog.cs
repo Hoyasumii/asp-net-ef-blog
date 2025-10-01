@@ -4,7 +4,7 @@ using Core.Shared;
 
 namespace Domain.Blog;
 
-public class Blog(DateTime? createdAt = null) : Entity(createdAt)
+public class Blog : Entity
 {
   [Required(AllowEmptyStrings = false, ErrorMessage = "Vai se foder filho da puta")]
   [Url(ErrorMessage = "O campo precisa ser uma URL")]

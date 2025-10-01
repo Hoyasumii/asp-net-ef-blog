@@ -1,8 +1,8 @@
 namespace Core.Shared;
 
-public abstract class Entity(DateTime? createdAt)
+public abstract class Entity
 {
-  public string Id { get; } = Guid.NewGuid().ToString();
-  public DateTime CreatedAt { get; } = createdAt ?? DateTime.Now;
+  public string Id { get; private set; } = Guid.NewGuid().ToString();
+  public DateTime CreatedAt { get; private set; } = DateTime.Now;
 }
 
