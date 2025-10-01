@@ -1,4 +1,4 @@
-using Domain.Shared;
+using Core.Shared;
 
 namespace Domain.Posts;
 

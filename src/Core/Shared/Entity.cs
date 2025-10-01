@@ -1,4 +1,4 @@
-namespace Domain.Shared;
+namespace Core.Shared;
 
 public abstract class Entity(DateTime? createdAt)
 {
