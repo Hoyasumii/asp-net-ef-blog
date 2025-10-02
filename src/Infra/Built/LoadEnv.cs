@@ -1,6 +1,6 @@
 using dotenv.net;
 
-namespace Core;
+namespace Infra.Built;
 
 public class LoadEnv
 {

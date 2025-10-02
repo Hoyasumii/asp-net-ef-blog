@@ -1,11 +1,12 @@
-using Core.Shared;
+using Core.Interfaces;
 using Domain.Blog.Dtos;
 
 namespace Domain.Blog;
 
-public abstract class BlogRepository<Context>(Context context) : Repository<Blog, Context>(context) where Context : DatabaseContext
+public interface IBlogRepository<Context> : IRepository<Context> 
+  where Context : IDatabaseContext
 {
-  public abstract Task<Blog> Create(CreateBlogDTO content);
+  public Task<Blog> Create(CreateBlogDTO content);
   // public abstract Task<Blog?> FindById(string id);
   // public abstract Task<Blog?> UpdateById<ArgumentType>(string id, ArgumentType data) where ArgumentType : class;
   // public abstract Task<bool> DeleteById(string id);

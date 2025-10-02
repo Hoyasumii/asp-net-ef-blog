@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Domain.Posts;
-using Core.Shared;
+using Core;
 
 namespace Domain.Blog;
 

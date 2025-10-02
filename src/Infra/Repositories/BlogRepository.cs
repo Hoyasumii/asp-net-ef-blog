@@ -1,13 +1,17 @@
-namespace Application.Repositories;
+namespace Infra.Repositories;
 
-using Application;
+using Core.Interfaces;
 using Domain.Blog;
 using Domain.Blog.Dtos;
 using Domain.Shared;
+using Infra.Interfaces;
 
-public class BlogRepository(ApplicationContext context) : BlogRepository<ApplicationContext>(context)
+public class BlogRepository(IApplicationContext context) : IBlogRepository<IApplicationContext>
 {
-  public override async Task<Blog> Create(CreateBlogDTO content)
+
+  public IApplicationContext Context { get; } = context;
+
+  public async Task<Blog> Create(CreateBlogDTO content)
   {
     DTOValidator validator = new(content);
 

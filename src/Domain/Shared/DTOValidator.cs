@@ -1,8 +1,8 @@
 namespace Domain.Shared;
 
-using Core.Shared;
+using Core.Interfaces;
 
-public sealed class DTOValidator(IDTO dto) : SchemaValidator<IDTO>(dto)
+public sealed class DTOValidator(IDataTransferObject dto) : SchemaValidator<IDataTransferObject>(dto)
 {
 
 }

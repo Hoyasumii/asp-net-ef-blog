@@ -1,8 +1,8 @@
-using Core.Shared;
+using Core.Interfaces;
 
 namespace Domain.Shared;
 
-public sealed class EntityValidator(Entity entity) : SchemaValidator<Entity>(entity)
+public sealed class EntityValidator(IEntity entity) : SchemaValidator<IEntity>(entity)
 {
 
 }
