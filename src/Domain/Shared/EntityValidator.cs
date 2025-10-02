@@ -1,14 +1,8 @@
 using Core.Shared;
-using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Shared;
 
-public class EntityValidator<EntityType>(EntityType entity) where EntityType : Entity
+public sealed class EntityValidator(Entity entity) : SchemaValidator<Entity>(entity)
 {
-  private ValidationContext Context { get; } = new(entity);
-  public List<ValidationResult> Results { get; } = [];
-  public bool IsValid
-  {
-    get => Validator.TryValidateObject(entity, Context, Results, true);
-  }
+
 }

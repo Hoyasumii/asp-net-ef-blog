@@ -1,27 +1,25 @@
-// namespace Application.Repositories;
+namespace Application.Repositories;
 
-// using Application;
-// using Domain.Blog;
+using Application;
+using Domain.Blog;
+using Domain.Blog.Dtos;
+using Domain.Shared;
 
-// public class BlogRepository(ApplicationContext context) : BlogRepository<ApplicationContext>(context)
-// {
-//   public override async Task<Blog> Create(Blog content)
-//   {
-//     return await Context.Blogs.AddAsync(content);
-//   }
+public class BlogRepository(ApplicationContext context) : BlogRepository<ApplicationContext>(context)
+{
+  public override async Task<Blog> Create(CreateBlogDTO content)
+  {
+    DTOValidator validator = new(content);
 
-//   public override Task<bool> DeleteById(string id)
-//   {
-//     throw new NotImplementedException();
-//   }
+    if (!validator.IsValid) { }
 
-//   public override Task<Blog?> FindById(string id)
-//   {
-//     throw new NotImplementedException();
-//   }
+    Blog newInstance = new()
+    {
+      Url = content.Url
+    };
 
-//   public override Task<Blog?> UpdateById(string id)
-//   {
-//     throw new NotImplementedException();
-//   }
-// }
+    await Context.Blogs.AddAsync(newInstance);
+
+    return newInstance;
+  }
+}
