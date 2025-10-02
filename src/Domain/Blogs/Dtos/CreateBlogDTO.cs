@@ -1,9 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using Core.Interfaces;
+namespace Domain.Blogs.Dtos;
 
-namespace Domain.Blog.Dtos;
-
-public class UpdateBlogDTO: IDataTransferObject
+public class CreateBlogDTO: IDataTransferObject
 {
   [Required(AllowEmptyStrings = false, ErrorMessage = "Não é Possível criar um Blog com a Url não Definida")]
   [Url(ErrorMessage = "Não é Possível criar um Blog com a Url Inválida")]

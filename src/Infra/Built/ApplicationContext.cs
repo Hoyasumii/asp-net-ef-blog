@@ -1,4 +1,3 @@
-using Core.Interfaces;
 using Domain.Blog;
 using Domain.Posts;
 using Infra.Interfaces;

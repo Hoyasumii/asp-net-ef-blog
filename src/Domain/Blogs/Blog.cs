@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Domain.Posts;
 using Core;
 
-namespace Domain.Blog;
+namespace Domain.Blogs;
 
 public class Blog : Entity
 {
