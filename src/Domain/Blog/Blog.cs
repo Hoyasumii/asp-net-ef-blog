@@ -8,6 +8,6 @@ public class Blog : Entity
 {
   [Required(AllowEmptyStrings = false, ErrorMessage = "Vai se foder filho da puta")]
   [Url(ErrorMessage = "O campo precisa ser uma URL")]
-  public required string Url { get; init; }
+  public required string Url { get; set; }
   public List<Post> Posts { get; } = [];
 }

@@ -20,4 +20,7 @@ public class ApplicationContext : DbContext, IApplicationContext
 
   public DbSet<Blog> Blogs { get; set; }
   public DbSet<Post> Posts { get; set; }
+
+  public async Task<int> Save() => await SaveChangesAsync();
+ 
 }
