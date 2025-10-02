@@ -1,4 +1,4 @@
-namespace Domain.Shared;
+namespace Core.Validators;
 
 using Core.Interfaces;
 

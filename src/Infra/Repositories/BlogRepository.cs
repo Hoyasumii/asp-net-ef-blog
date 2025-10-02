@@ -1,7 +1,7 @@
 namespace Infra.Repositories;
 
-using Domain.Blog;
-using Domain.Blog.Dtos;
+using Domain.Blogs;
+using Domain.Blogs.Dtos;
 using Infra.Interfaces;
 
 public class BlogRepository(IApplicationContext context) : IBlogRepository<IApplicationContext>
@@ -9,18 +9,13 @@ public class BlogRepository(IApplicationContext context) : IBlogRepository<IAppl
 
   public IApplicationContext Context { get; } = context;
 
-  public async Task<Blog> Create(CreateBlogDTO content)
+  public async Task<Blog> Create(Blog content)
   {
-    Blog newInstance = new()
-    {
-      Url = content.Url
-    };
-
-    await Context.Blogs.AddAsync(newInstance);
+    await Context.Blogs.AddAsync(content);
 
     await Context.Save();
 
-    return newInstance;
+    return content;
   }
 
   public async Task<Blog?> FindById(string id)

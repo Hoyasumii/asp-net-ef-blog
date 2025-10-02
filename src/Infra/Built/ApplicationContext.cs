@@ -1,4 +1,4 @@
-using Domain.Blog;
+using Domain.Blogs;
 using Domain.Posts;
 using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;

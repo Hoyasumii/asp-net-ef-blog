@@ -1,5 +1,5 @@
 using Core.Interfaces;
-using Domain.Blog;
+using Domain.Blogs;
 using Domain.Posts;
 using Microsoft.EntityFrameworkCore;
 
