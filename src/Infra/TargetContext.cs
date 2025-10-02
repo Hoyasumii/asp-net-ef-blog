@@ -1,10 +1,9 @@
-namespace Infra.Providers;
+namespace Infra;
 
 using Application;
-using Core;
 using Microsoft.EntityFrameworkCore;
 
-public class PostgresContext : ApplicationContext
+public class TargetContext : ApplicationContext
 {
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {
