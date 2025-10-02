@@ -11,5 +11,3 @@ public class Blog : Entity
   public required string Url { get; set; }
   public List<Post> Posts { get; } = [];
 }
-
-// TODO: Se eu estiver de bom humor em algum momento, eu vou implementar os Object Values

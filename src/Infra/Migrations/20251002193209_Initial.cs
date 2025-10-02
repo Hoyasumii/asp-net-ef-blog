@@ -15,7 +15,7 @@ namespace Infra.Migrations
                 name: "Blogs",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "text", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Url = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -25,20 +25,20 @@ namespace Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Posts",
+                name: "posts_tests",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "text", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: false),
                     Content = table.Column<string>(type: "text", nullable: false),
-                    BlogId = table.Column<string>(type: "text", nullable: false),
+                    BlogId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.PrimaryKey("PK_posts_tests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_Blogs_BlogId",
+                        name: "FK_posts_tests_Blogs_BlogId",
                         column: x => x.BlogId,
                         principalTable: "Blogs",
                         principalColumn: "Id",
@@ -46,8 +46,8 @@ namespace Infra.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_BlogId",
-                table: "Posts",
+                name: "IX_posts_tests_BlogId",
+                table: "posts_tests",
                 column: "BlogId");
         }
 
@@ -55,7 +55,7 @@ namespace Infra.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "posts_tests");
 
             migrationBuilder.DropTable(
                 name: "Blogs");

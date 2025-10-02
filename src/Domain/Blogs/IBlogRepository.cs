@@ -3,7 +3,7 @@ using Domain.Blogs.Dtos;
 
 namespace Domain.Blogs;
 
-public interface IBlogRepository<Context> : IRepository<Context> 
+public interface IBlogRepository<out Context> : IRepository<Context> 
   where Context : IDatabaseContext
 {
   public Task<Blog> Create(Blog content);

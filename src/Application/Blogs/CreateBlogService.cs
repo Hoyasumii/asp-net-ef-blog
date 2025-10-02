@@ -6,9 +6,10 @@ using Domain.Blogs.Dtos;
 
 namespace Application.Blogs;
 
-public class CreateBlogService(IBlogRepository<IDatabaseContext> repository) : IService<IBlogRepository<IDatabaseContext>, CreateBlogDTO, Blog>
+public class CreateBlogService<RepositoryType>(RepositoryType repository) : IService<RepositoryType, CreateBlogDTO, Blog>
+  where RepositoryType : IBlogRepository<IDatabaseContext>
 {
-  public IBlogRepository<IDatabaseContext> Repository { get; } = repository;
+  public RepositoryType Repository { get; } = repository;
 
   public async Task<Blog> Run(CreateBlogDTO data)
   {

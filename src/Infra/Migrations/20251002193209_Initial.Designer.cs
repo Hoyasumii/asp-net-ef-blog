@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20251002142805_Initial")]
+    [Migration("20251002193209_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -25,10 +25,11 @@ namespace Infra.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Blog.Blog", b =>
+            modelBuilder.Entity("Domain.Blogs.Blog", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -44,12 +45,12 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("Domain.Posts.Post", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("BlogId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid>("BlogId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -66,12 +67,12 @@ namespace Infra.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("posts_tests");
                 });
 
             modelBuilder.Entity("Domain.Posts.Post", b =>
                 {
-                    b.HasOne("Domain.Blog.Blog", "Blog")
+                    b.HasOne("Domain.Blogs.Blog", "Blog")
                         .WithMany("Posts")
                         .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -80,7 +81,7 @@ namespace Infra.Migrations
                     b.Navigation("Blog");
                 });
 
-            modelBuilder.Entity("Domain.Blog.Blog", b =>
+            modelBuilder.Entity("Domain.Blogs.Blog", b =>
                 {
                     b.Navigation("Posts");
                 });
