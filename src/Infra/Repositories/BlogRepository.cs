@@ -3,20 +3,14 @@ namespace Infra.Repositories;
 using Domain.Blogs;
 using Domain.Blogs.Dtos;
 using Infra.Interfaces;
+using Infra.Repositories.Blogs;
 
 public class BlogRepository(IApplicationContext context) : IBlogRepository<IApplicationContext>
 {
 
   public IApplicationContext Context { get; } = context;
 
-  public async Task<Blog> Create(Blog content)
-  {
-    await Context.Blogs.AddAsync(content);
-
-    await Context.Save();
-
-    return content;
-  }
+  public async Task<Blog> Create(Blog content) => await CreateBlog.Run(Context)(content);
 
   public async Task<Blog?> FindById(string id)
   {
