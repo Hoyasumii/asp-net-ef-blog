@@ -2,26 +2,20 @@ using System.Threading.Tasks;
 using Application.Blogs;
 using Domain.Blogs;
 using Infra.Built;
+using Infra.Factories.Repositories;
+using Infra.Interfaces;
 using Infra.Repositories;
 
 namespace Infra.Factories.Services.Blogs;
 
-public class CreateBlogFactory
+public class MakeCreateBlogFactory
 {
-  public static async Task<CreateBlogService<BlogRepository>> Make()
+  public static CreateBlogService<IBlogRepository<IApplicationContext>> Run()
   {
-    ApplicationContext context = new();
-    BlogRepository repository = new(context);
+    IBlogRepository<IApplicationContext> repository = MakeBlogRepository.Run();
 
-    CreateBlogService<BlogRepository> service = new(repository);
+    CreateBlogService<IBlogRepository<IApplicationContext>> service = new(repository);
 
-    Blog blog = new()
-    {
-      Url = "https://google.com"
-    };
-
-    await repository.Create(blog);
-
-    return new(repository);
+    return service;
   }
 }

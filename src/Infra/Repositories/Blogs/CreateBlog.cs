@@ -1,15 +1,12 @@
-using Core.Interfaces;
 using Domain.Blogs;
+using Infra.Abstractions;
 using Infra.Interfaces;
 
 namespace Infra.Repositories.Blogs;
 
-public class CreateBlog<ContextType>(ContextType context, IBlogRepository<ContextType> repository) : IActionMethods<IBlogRepository<ContextType>, ContextType, Blog, Task<Blog>> where ContextType : IApplicationContext
+public class CreateBlog(IApplicationContext context, IBlogRepository<IApplicationContext> repository) : BlogActionMethods(context, repository)
 {
-  public ContextType Context { get; } = context;
-  public IBlogRepository<ContextType> Repository { get; } = repository;
-
-  public async Task<Blog> Method(Blog content)
+  public override async Task<Blog> Method(Blog content)
   {
     await Context.Blogs.AddAsync(content);
 

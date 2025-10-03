@@ -1,5 +1,6 @@
 namespace Infra.Repositories;
 
+using Core.Dtos;
 using Domain.Blogs;
 using Domain.Blogs.Dtos;
 using Infra.Interfaces;
@@ -8,14 +9,18 @@ using Infra.Repositories.Blogs;
 public class BlogRepository : IBlogRepository<IApplicationContext>
 {
 
-  public IApplicationContext Context { get; }
+  protected IApplicationContext Context { get; }
   public Func<Blog, Task<Blog>> Create { get; }
+  public Func<GuidDTO, Task<Blog?>> FindById { get; }
+  public Func<UpdateBlogDTO, Task<Blog?>> UpdateById { get; }
+  public Func<GuidDTO, Task<bool>> DeleteById { get; }
+}
   
 
   public BlogRepository(IApplicationContext context)
   {
     Context = context;
-    Create = new CreateBlog<IApplicationContext>(context, this).Method;
+    Create = new CreateBlog(context, this).Method;
   }
 
   public async Task<Blog?> FindById(string id)
