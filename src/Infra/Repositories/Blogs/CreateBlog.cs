@@ -1,14 +1,15 @@
+using Core.Interfaces;
 using Domain.Blogs;
 using Infra.Interfaces;
 
 namespace Infra.Repositories.Blogs;
 
-// Action Methods
-public class CreateBlog(IApplicationContext context)
+public class CreateBlog<ContextType>(ContextType context, IBlogRepository<ContextType> repository) : IActionMethods<IBlogRepository<ContextType>, ContextType, Blog, Task<Blog>> where ContextType : IApplicationContext
 {
-  protected IApplicationContext Context { get; } = context;
+  public ContextType Context { get; } = context;
+  public IBlogRepository<ContextType> Repository { get; } = repository;
 
-  protected async Task<Blog> Create(Blog content)
+  public async Task<Blog> Method(Blog content)
   {
     await Context.Blogs.AddAsync(content);
 
@@ -16,12 +17,4 @@ public class CreateBlog(IApplicationContext context)
 
     return content;
   }
-
-
-  public static Func<Blog, Task<Blog>> Run(IApplicationContext context)
-  {
-    return new CreateBlog(context).Create;
-  }
-
-
 }

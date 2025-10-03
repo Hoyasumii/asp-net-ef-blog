@@ -5,12 +5,18 @@ using Domain.Blogs.Dtos;
 using Infra.Interfaces;
 using Infra.Repositories.Blogs;
 
-public class BlogRepository(IApplicationContext context) : IBlogRepository<IApplicationContext>
+public class BlogRepository : IBlogRepository<IApplicationContext>
 {
 
-  public IApplicationContext Context { get; } = context;
+  public IApplicationContext Context { get; }
+  public Func<Blog, Task<Blog>> Create { get; }
+  
 
-  public async Task<Blog> Create(Blog content) => await CreateBlog.Run(Context)(content);
+  public BlogRepository(IApplicationContext context)
+  {
+    Context = context;
+    Create = new CreateBlog<IApplicationContext>(context, this).Method;
+  }
 
   public async Task<Blog?> FindById(string id)
   {
