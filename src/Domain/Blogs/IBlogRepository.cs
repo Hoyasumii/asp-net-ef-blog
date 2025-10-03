@@ -8,7 +8,7 @@ public interface IBlogRepository<out Context> : IRepository<Context>
   where Context : IDatabaseContext
 {
   public Func<Blog, Task<Blog>> Create { get; }
-  public Func<GuidDTO, Task<Blog?>> FindById { get; }
+  public Func<string, Task<Blog?>> FindById { get; }
   public Func<UpdateBlogDTO, Task<Blog?>> UpdateById { get; }
-  public Func<GuidDTO, Task<bool>> DeleteById { get; }
+  public Func<string, Task<bool>> DeleteById { get; }
 }

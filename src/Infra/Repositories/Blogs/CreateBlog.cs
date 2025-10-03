@@ -4,7 +4,7 @@ using Infra.Interfaces;
 
 namespace Infra.Repositories.Blogs;
 
-public class CreateBlog(IApplicationContext context, IBlogRepository<IApplicationContext> repository) : BlogActionMethods(context, repository)
+public class CreateBlog(IApplicationContext context, IBlogRepository<IApplicationContext> repository) : BlogActionMethods<Blog, Task<Blog>>(context, repository)
 {
   public override async Task<Blog> Method(Blog content)
   {
