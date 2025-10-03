@@ -3,14 +3,15 @@ using Core.Dtos;
 using Core.Interfaces;
 using Core.Validators;
 using Domain.Blogs;
+using Domain.Blogs.Dtos;
 
 namespace Application.Blogs;
 
-public class FindBlogByIdService(IBlogRepository<IDatabaseContext> repository) : IService<IBlogRepository<IDatabaseContext>, GuidDTO, Blog>
+public class DeleteBlogByIdService(IBlogRepository<IDatabaseContext> repository) : IService<IBlogRepository<IDatabaseContext>, GuidDTO, bool>
 {
   public IBlogRepository<IDatabaseContext> Repository { get; } = repository;
 
-  public async Task<Blog> Run(GuidDTO data)
+  public async Task<bool> Run(GuidDTO data)
   {
     DTOValidator validator = new(data);
 
@@ -19,8 +20,6 @@ public class FindBlogByIdService(IBlogRepository<IDatabaseContext> repository) :
       throw new InvalidArgumentException("Blog");
     }
 
-    Blog targetBlog = await Repository.FindById(data.Id.ToString()) ?? throw new ResourceNotFoundException("Blog");
-
-    return targetBlog;
+    return await Repository.DeleteById(data.Id.ToString());
   }
 }

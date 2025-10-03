@@ -7,11 +7,11 @@ namespace Infra.Factories.Services.Blogs;
 
 public class MakeCreateBlogFactory
 {
-  public static CreateBlogService<IBlogRepository<IApplicationContext>> Run()
+  public static CreateBlogService Run()
   {
     IBlogRepository<IApplicationContext> repository = MakeBlogRepository.Run();
 
-    CreateBlogService<IBlogRepository<IApplicationContext>> service = new(repository);
+    CreateBlogService service = new(repository);
 
     return service;
   }

@@ -1,6 +1,6 @@
 using Core.Interfaces;
 
-namespace Application.Exceptions;
+namespace Application.Shared.Exceptions;
 
 public class InvalidArgumentException(string? layer) : Exception(
   layer != null ?

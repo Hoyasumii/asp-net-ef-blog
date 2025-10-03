@@ -1,6 +1,6 @@
 using Core.Interfaces;
 
-namespace Application.Exceptions;
+namespace Application.Shared.Exceptions;
 
 public class ResourceNotFoundException(string? layer) : Exception(
   layer != null ?

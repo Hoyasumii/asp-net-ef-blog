@@ -1,16 +1,16 @@
 using Application.Shared.Exceptions;
-using Core.Dtos;
 using Core.Interfaces;
 using Core.Validators;
 using Domain.Blogs;
+using Domain.Blogs.Dtos;
 
 namespace Application.Blogs;
 
-public class FindBlogByIdService(IBlogRepository<IDatabaseContext> repository) : IService<IBlogRepository<IDatabaseContext>, GuidDTO, Blog>
+public class UpdateBlogByIdService(IBlogRepository<IDatabaseContext> repository) : IService<IBlogRepository<IDatabaseContext>, UpdateBlogDTO, Blog>
 {
   public IBlogRepository<IDatabaseContext> Repository { get; } = repository;
 
-  public async Task<Blog> Run(GuidDTO data)
+  public async Task<Blog> Run(UpdateBlogDTO data)
   {
     DTOValidator validator = new(data);
 
@@ -19,7 +19,7 @@ public class FindBlogByIdService(IBlogRepository<IDatabaseContext> repository) :
       throw new InvalidArgumentException("Blog");
     }
 
-    Blog targetBlog = await Repository.FindById(data.Id.ToString()) ?? throw new ResourceNotFoundException("Blog");
+    Blog targetBlog = await Repository.UpdateById(data) ?? throw new ResourceNotFoundException("Blog");
 
     return targetBlog;
   }
