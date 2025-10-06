@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories.Posts;
 
-public class UpdateById(IApplicationContext context, IPostRepository<IApplicationContext> repository) : PostActionMethods<UpdatePostDTO, Task<Post?>>(context, repository)
+public class UpdateById(IEntityFrameworkCoreAsORMContext context, IPostRepository<IEntityFrameworkCoreAsORMContext> repository) : PostActionMethods<UpdatePostDTO, Task<Post?>>(context, repository)
 {
   public override async Task<Post?> Method(UpdatePostDTO arg)
   {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Test.Built;
 
-public class ApplicationContext : DbContext, IApplicationContext
+public class ApplicationContext : DbContext, IEntityFrameworkCoreAsORMContext
 {
   private readonly SqliteConnection _connection;
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories.Posts;
 
-public class FindById(IApplicationContext context, IPostRepository<IApplicationContext> repository) : PostActionMethods<string, Task<Post?>>(context, repository)
+public class FindById(IEntityFrameworkCoreAsORMContext context, IPostRepository<IEntityFrameworkCoreAsORMContext> repository) : PostActionMethods<string, Task<Post?>>(context, repository)
 {
   public override async Task<Post?> Method(string arg)
   {

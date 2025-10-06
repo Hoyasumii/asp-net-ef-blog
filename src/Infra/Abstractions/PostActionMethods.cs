@@ -3,10 +3,10 @@ using Infra.Interfaces;
 
 namespace Infra.Abstractions;
 
-public abstract class PostActionMethods<Input, Output>(IApplicationContext context, IPostRepository<IApplicationContext> repository) : IPostActionMethods<Input, Output>
+public abstract class PostActionMethods<Input, Output>(IEntityFrameworkCoreAsORMContext context, IPostRepository<IEntityFrameworkCoreAsORMContext> repository) : IPostActionMethods<Input, Output>
 {
-  public IApplicationContext Context { get; } = context;
-  public IPostRepository<IApplicationContext> Repository { get; } = repository;
+  public IEntityFrameworkCoreAsORMContext Context { get; } = context;
+  public IPostRepository<IEntityFrameworkCoreAsORMContext> Repository { get; } = repository;
 
   public abstract Output Method(Input content);
 }

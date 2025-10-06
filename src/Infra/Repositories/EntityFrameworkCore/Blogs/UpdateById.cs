@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories.Blogs;
 
-public class UpdateById(IApplicationContext context, IBlogRepository<IApplicationContext> repository) : BlogActionMethods<UpdateBlogDTO, Task<Blog?>>(context, repository)
+public class UpdateById(IEntityFrameworkCoreAsORMContext context, IBlogRepository<IEntityFrameworkCoreAsORMContext> repository) : BlogActionMethods<UpdateBlogDTO, Task<Blog?>>(context, repository)
 {
   public override async Task<Blog?> Method(UpdateBlogDTO arg)
   {

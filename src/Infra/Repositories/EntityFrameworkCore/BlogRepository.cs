@@ -1,21 +1,21 @@
-namespace Infra.Repositories;
+namespace Infra.Repositories.EntityFrameworkCore;
 
 using Domain.Blogs;
 using Domain.Blogs.Dtos;
 using Infra.Interfaces;
 using Infra.Repositories.Blogs;
 
-public class BlogRepository : IBlogRepository<IApplicationContext>
+public class BlogRepository: IBlogRepository<IEntityFrameworkCoreAsORMContext>
 {
 
-  public IApplicationContext Context { get; }
+  public IEntityFrameworkCoreAsORMContext Context { get; }
   public Func<Blog, Task<Blog>> Create { get; }
   public Func<string, Task<Blog?>> FindById { get; }
   public Func<UpdateBlogDTO, Task<Blog?>> UpdateById { get; }
   public Func<string, Task<bool>> DeleteById { get; }
 
 
-  public BlogRepository(IApplicationContext context)
+  public BlogRepository(IEntityFrameworkCoreAsORMContext context)
   {
     Context = context;
     Create = new CreateBlog(context, this).Method;

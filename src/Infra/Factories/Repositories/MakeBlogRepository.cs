@@ -1,15 +1,15 @@
 using Domain.Blogs;
 using Infra.Built;
 using Infra.Interfaces;
-using Infra.Repositories;
+using Infra.Repositories.EntityFrameworkCore;
 
 namespace Infra.Factories.Repositories;
 
 public class MakeBlogRepository
 {
-  public static IBlogRepository<IApplicationContext> Run()
+  public static IBlogRepository<IEntityFrameworkCoreAsORMContext> Run()
   {
-    ApplicationContext context = new();
+    EntityFrameworkCoreAsORMContext context = new();
     return new BlogRepository(context);
   }
 }

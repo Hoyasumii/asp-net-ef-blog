@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories.Posts;
 
-public class DeleteById(IApplicationContext context, IPostRepository<IApplicationContext> repository) : PostActionMethods<string, Task<bool>>(context, repository)
+public class DeleteById(IEntityFrameworkCoreAsORMContext context, IPostRepository<IEntityFrameworkCoreAsORMContext> repository) : PostActionMethods<string, Task<bool>>(context, repository)
 {
   public override async Task<bool> Method(string arg)
   {
