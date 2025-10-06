@@ -9,7 +9,7 @@ public class MakeDeleteBlogByIdFactory
 {
   public static DeleteBlogByIdService Run()
   {
-    IBlogRepository<IEntityFrameworkCoreAsORMContext> repository = MakeBlogRepository.Run();
+    IBlogRepository<IApplicationContext> repository = MakeBlogRepository.Run();
 
     DeleteBlogByIdService service = new(repository);
 

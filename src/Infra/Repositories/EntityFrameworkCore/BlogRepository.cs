@@ -5,17 +5,17 @@ using Domain.Blogs.Dtos;
 using Infra.Interfaces;
 using Infra.Repositories.EntityFrameworkCore.Blogs;
 
-public class BlogRepository: IBlogRepository<IEntityFrameworkCoreAsORMContext>
+public class BlogRepository: IBlogRepository<IApplicationContext>
 {
 
-  public IEntityFrameworkCoreAsORMContext Context { get; }
+  public IApplicationContext Context { get; }
   public Func<Blog, Task<Blog>> Create { get; }
   public Func<string, Task<Blog?>> FindById { get; }
   public Func<UpdateBlogDTO, Task<Blog?>> UpdateById { get; }
   public Func<string, Task<bool>> DeleteById { get; }
 
 
-  public BlogRepository(IEntityFrameworkCoreAsORMContext context)
+  public BlogRepository(IApplicationContext context)
   {
     Context = context;
     Create = new CreateBlog(context, this).Method;

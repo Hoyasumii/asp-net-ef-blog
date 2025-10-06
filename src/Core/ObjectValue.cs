@@ -30,4 +30,9 @@ public abstract class ObjectValue<TValue>
 
     return value;
   }
+
+  public override string ToString()
+  {
+    return Value?.ToString() ?? throw new Exception();
+  }
 }

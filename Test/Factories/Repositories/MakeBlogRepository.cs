@@ -7,7 +7,7 @@ namespace Test.Factories.Repositories;
 
 public class MakeBlogRepository
 {
-  public static IBlogRepository<IEntityFrameworkCoreAsORMContext> Run()
+  public static IBlogRepository<IApplicationContext> Run()
   {
     ApplicationContext context = new();
     return new BlogRepository(context);

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories.EntityFrameworkCore.Blogs;
 
-public class DeleteById(IEntityFrameworkCoreAsORMContext context, IBlogRepository<IEntityFrameworkCoreAsORMContext> repository) : BlogActionMethods<string, Task<bool>>(context, repository)
+public class DeleteById(IApplicationContext context, IBlogRepository<IApplicationContext> repository) : BlogActionMethods<string, Task<bool>>(context, repository)
 {
   public override async Task<bool> Method(string arg)
   {

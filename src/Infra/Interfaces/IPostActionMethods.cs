@@ -3,4 +3,4 @@ using Domain.Posts;
 
 namespace Infra.Interfaces;
 
-public interface IPostActionMethods<in Args, out Output> : IActionMethods<IPostRepository<IEntityFrameworkCoreAsORMContext>, IEntityFrameworkCoreAsORMContext, Args, Output> { }
+public interface IPostActionMethods<in Args, out Output> : IActionMethods<IPostRepository<IApplicationContext>, IApplicationContext, Args, Output> { }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Built;
 
-public class EntityFrameworkCoreAsORMContext : DbContext, IEntityFrameworkCoreAsORMContext
+public class ApplicationContext : DbContext, IApplicationContext
 {
-  public EntityFrameworkCoreAsORMContext()
+  public ApplicationContext()
   {
     LoadEnv.Run();
   }

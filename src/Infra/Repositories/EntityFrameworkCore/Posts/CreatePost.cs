@@ -4,7 +4,7 @@ using Infra.Interfaces;
 
 namespace Infra.Repositories.EntityFrameworkCore.Posts;
 
-public class CreatePost(IEntityFrameworkCoreAsORMContext context, IPostRepository<IEntityFrameworkCoreAsORMContext> repository) : PostActionMethods<Post, Task<Post>>(context, repository)
+public class CreatePost(IApplicationContext context, IPostRepository<IApplicationContext> repository) : PostActionMethods<Post, Task<Post>>(context, repository)
 {
   public override async Task<Post> Method(Post content)
   {
