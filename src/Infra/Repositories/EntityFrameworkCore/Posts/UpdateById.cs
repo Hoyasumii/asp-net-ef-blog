@@ -19,12 +19,6 @@ public class UpdateById(IApplicationContext context, IPostRepository<IApplicatio
     targetPost.Content = arg.Content;
     targetPost.BlogId = arg.BlogId;
 
-    var newBlogReference = await Context.Blogs.FindAsync(arg.BlogId);
-
-    if (newBlogReference is null) return null;
-
-    targetPost.Blog = newBlogReference;
-
     await Context.Save();
 
     return targetPost;

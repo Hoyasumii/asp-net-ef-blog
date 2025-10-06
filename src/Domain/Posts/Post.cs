@@ -16,5 +16,4 @@ public class Post : Entity
   
   [ForeignKey(nameof(Blog))]
   public required Guid BlogId { get; set; }
-  public required Blog Blog { get; set; }
 }

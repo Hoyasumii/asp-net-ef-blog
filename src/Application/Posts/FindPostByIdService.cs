@@ -6,11 +6,11 @@ using Domain.Posts;
 
 namespace Application.Posts;
 
-public sealed class FindPostsByBlogIdService(IPostRepository<IDatabaseContext> repository) : IService<IPostRepository<IDatabaseContext>, GuidDTO, Post[]>
+public sealed class FindPostByIdService(IPostRepository<IDatabaseContext> repository) : IService<IPostRepository<IDatabaseContext>, GuidDTO, Post>
 {
   private IPostRepository<IDatabaseContext> Repository { get; } = repository;
 
-  public async Task<Post[]> Run(GuidDTO data)
+  public async Task<Post> Run(GuidDTO data)
   {
     DTOValidator validator = new(data);
 
@@ -19,8 +19,10 @@ public sealed class FindPostsByBlogIdService(IPostRepository<IDatabaseContext> r
       throw new InvalidArgumentException("Post");
     }
 
-    var targetPosts = await Repository.FindByBlogId(data.Id.ToString()) ?? throw new ResourceNotFoundException($"Task {data.Id}");
+    var targetPost =
+    await Repository.FindById(data.Id.ToString())
+    ?? throw new ResourceNotFoundException("Post");
 
-    return targetPosts;
+    return targetPost;
   }
 }

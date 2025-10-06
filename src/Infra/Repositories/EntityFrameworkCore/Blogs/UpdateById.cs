@@ -15,7 +15,6 @@ public class UpdateById(IApplicationContext context, IBlogRepository<IApplicatio
 
     if (targetBlog is null) return null;
 
-    targetBlog.Id = arg.Id;
     targetBlog.Url = arg.Url;
 
     await Context.Save();

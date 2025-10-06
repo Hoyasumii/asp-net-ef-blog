@@ -8,6 +8,6 @@ public abstract class Entity: IEntity
 {
   [Key]
   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-  public Guid Id { get; set; } = Guid.NewGuid();
+  public Guid Id { get; } = Guid.NewGuid();
   public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
