@@ -3,7 +3,7 @@ using Infra.Abstractions;
 using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Repositories.Posts;
+namespace Infra.Repositories.EntityFrameworkCore.Posts;
 
 public class DeleteById(IEntityFrameworkCoreAsORMContext context, IPostRepository<IEntityFrameworkCoreAsORMContext> repository) : PostActionMethods<string, Task<bool>>(context, repository)
 {

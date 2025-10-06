@@ -3,7 +3,7 @@ namespace Infra.Repositories.EntityFrameworkCore;
 using Domain.Blogs;
 using Domain.Blogs.Dtos;
 using Infra.Interfaces;
-using Infra.Repositories.Blogs;
+using Infra.Repositories.EntityFrameworkCore.Blogs;
 
 public class BlogRepository: IBlogRepository<IEntityFrameworkCoreAsORMContext>
 {

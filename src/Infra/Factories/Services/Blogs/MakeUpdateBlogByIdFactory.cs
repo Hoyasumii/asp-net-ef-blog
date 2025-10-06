@@ -9,7 +9,7 @@ public class MakeUpdateBlogByIdFactory
 {
   public static UpdateBlogByIdService Run()
   {
-    IBlogRepository<IEntityFrameworkCoreAsORMContext> repository = MakeBlogRepository.Run();
+    var repository = MakeBlogRepository.Run();
 
     UpdateBlogByIdService service = new(repository);
 

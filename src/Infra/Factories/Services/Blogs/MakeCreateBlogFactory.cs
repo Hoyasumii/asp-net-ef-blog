@@ -9,7 +9,7 @@ public class MakeCreateBlogFactory
 {
   public static CreateBlogService Run()
   {
-    IBlogRepository<IEntityFrameworkCoreAsORMContext> repository = MakeBlogRepository.Run();
+    var repository = MakeBlogRepository.Run();
 
     CreateBlogService service = new(repository);
 

@@ -1,11 +1,9 @@
-using Core.Dtos;
-using Core.Interfaces;
 using Domain.Blogs;
 using Infra.Abstractions;
 using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Repositories.Blogs;
+namespace Infra.Repositories.EntityFrameworkCore.Blogs;
 
 public class FindById(IEntityFrameworkCoreAsORMContext context, IBlogRepository<IEntityFrameworkCoreAsORMContext> repository) : BlogActionMethods<string, Task<Blog?>>(context, repository)
 {

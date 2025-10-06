@@ -4,7 +4,7 @@ using Infra.Abstractions;
 using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Repositories.Blogs;
+namespace Infra.Repositories.EntityFrameworkCore.Blogs;
 
 public class UpdateById(IEntityFrameworkCoreAsORMContext context, IBlogRepository<IEntityFrameworkCoreAsORMContext> repository) : BlogActionMethods<UpdateBlogDTO, Task<Blog?>>(context, repository)
 {

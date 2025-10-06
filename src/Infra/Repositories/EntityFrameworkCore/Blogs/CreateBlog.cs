@@ -2,7 +2,7 @@ using Domain.Blogs;
 using Infra.Abstractions;
 using Infra.Interfaces;
 
-namespace Infra.Repositories.Blogs;
+namespace Infra.Repositories.EntityFrameworkCore.Blogs;
 
 public class CreateBlog(IEntityFrameworkCoreAsORMContext context, IBlogRepository<IEntityFrameworkCoreAsORMContext> repository) : BlogActionMethods<Blog, Task<Blog>>(context, repository)
 {

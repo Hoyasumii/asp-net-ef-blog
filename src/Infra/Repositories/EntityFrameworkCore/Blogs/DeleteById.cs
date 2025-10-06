@@ -1,10 +1,9 @@
-using Core.Dtos;
 using Domain.Blogs;
 using Infra.Abstractions;
 using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Repositories.Blogs;
+namespace Infra.Repositories.EntityFrameworkCore.Blogs;
 
 public class DeleteById(IEntityFrameworkCoreAsORMContext context, IBlogRepository<IEntityFrameworkCoreAsORMContext> repository) : BlogActionMethods<string, Task<bool>>(context, repository)
 {
